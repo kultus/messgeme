@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>messge.me Simple Private Messaging</title>
+  <meta name="description" content="messge.me is simplified private messaging through private contact forms and email forwarders. It's public privacy and free!">
+  <meta name="keywords" content="private messaging, email forwarders, contact form, contact, email">
+  <link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/assets/application.js" type="text/javascript"></script>
+  <script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-24059229-5']);_gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();</script>
+</head>
+<body>
+
+	<div class="topbar">
+		<div class="fill">
+			<div class="container fixed">
+				<h3><a href="/">messge.me</a></h3>
+				<ul>
+					<li><a href="/about">About</a></li>
+				</ul>
+                <ul>
+                    <li><a href="/contact/new">Contact</a></li>
+                </ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+
+    	<section id="form">
+		  <div class="page-header">
+		    <h1>Edit your messge.me account {{ messager.owner }}</h1>
+		  </div>
+		
+		  <div class="row">
+		    <div class="span4 columns">
+		      <h3>Nice to see you again</h3>
+		    </div>
+		
+		    <div class="span12 columns">
+			  
+			  {% if signup %}	
+			  <div class="alert-message info"><p>Thanks for creating a messge.me account. Any emails now sent to {{ messager.messgekey }}@messge.me will be forwarded to {{ messager.owner }}</p></div>
+			  {% endif %}	
+			
+			  {% if updated %}	
+			  <div class="alert-message info"><p>Messge.me account updated.</p></div>
+			  {% endif %}
+			
+		      <form accept-charset="UTF-8" action="/messges/{{ messager.token }}/edit" class="edit_messager" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+
+            
+            <input id="messager_token" name="messager[token]" type="hidden" value="4wqxihpecq" />
+            <div class="clearfix">
+                <label for="messager_Enter a message description">Enter a message description</label>
+                <div class="input"><textarea class="xxlarge" cols="40" id="messager_message" name="messager[message]" rows="5">{{ messager.message }}</textarea><span class="help-block">[optional] this message shows on your messge.me page</span></div>
+            </div>
+
+            <div class="clearfix">
+                <label for="messager_Forwarder Enabled">Forwarder enabled</label>
+                <div class="input"><input {% if messager.enabled %}checked="checked"{% endif %} id="messager_enabled" name="messager[enabled]" type="checkbox" value="1" /><span class="help-block">If you disable your account we will no longer forward you emails. Accounts can be re-enabled at any time using this admin panel.</span></div>
+            </div>
+
+            <div class="actions">
+                <input class="btn success" name="commit" type="submit" value="Update" />
+            </div>
+          </fieldset>
+</form>
+		
+		    </div>
+		
+		    <div class="span12 columns">
+		      <p>Some important information has been emailed to you but you can review it below as well!</p>
+		      <p>There are two ways to use your messge.me:</p>
+		      <ul>
+		        <li>Distribute the email address {{ messager.messgekey }}@messge.me</li>
+		        <li>Provide a link to the contact form at http://messge.me/m/{{ messager.messgekey }}</li>
+		      </ul>
+		      <p>We'll forward any emails sent to the address or entered on the contact form to your registered email privately and securely.</p>
+		    </div>
+		
+		  </div>
+		
+		</section>
+	
+		<footer>
+    	    <p>&copy; <a href="http://inkscribbles.com" title="Software and Beautiful Design">Ink Scribbles Pty Ltd</a> 2011</p>
+            <p>We don't retain a copy of any emails sent using this service!</p>
+	    </footer>
+	
+	</div>
+	
+</body>
+</html>

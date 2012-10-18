@@ -1,0 +1,35 @@
+application: messgeme
+version: 2
+runtime: python27
+api_version: 1
+threadsafe: false
+
+handlers:
+- url: /favicon\.ico
+  static_files: assets/favicon.ico
+  upload: assets/favicon\.ico
+
+- url: /assets
+  static_dir: assets
+
+- url: /_ah/remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /_ah/mail/.+ 
+  script: handle_catchall.py
+  login: admin
+
+- url: /tasks/summary
+  script: summary.app
+  login: admin
+
+- url: .*
+  script: main.app
+
+inbound_services:
+- mail
+
+libraries:
+- name: jinja2
+  version: latest
