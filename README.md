@@ -3,7 +3,7 @@ Messge.me
 
 Messgeme is the code behind [messge.me](http://messge.me)
 
-It runs in Google App Engine and provides a private, anonymous, disposable email forwarder that yo ucan distribute without fear of spam, harassment or tracking.
+It runs in Google App Engine and provides a private, anonymous, disposable email forwarder that you can distribute without fear of spam, harassment or tracking.
 
 All emails are securely forwarded and deleted.
 
